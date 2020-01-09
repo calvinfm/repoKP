@@ -43,7 +43,7 @@ var id = "<?php echo $this->session->userdata('username');?>";
                                 <div class="card-body">
                                     <h4 class="card-title">Form Upload Journal</h4>
                                     <p class="card-description"> Upload Journal anda di formulir ini. </p>
-                                    <form class="forms-sample" id="addJournal" method="POST" enctype="multipart/form-data">
+                                    <form class="forms-sample" id="addJournal" method="PUT" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="inputJudul">Judul</label>
                                             <input type="text" class="form-control" id="inputJudul"

@@ -24,6 +24,9 @@
 </head>
 
 <body>
+<script>
+var id=null;
+</script>
 
     <div class="limiter">
         <div class="container-login100">
@@ -40,7 +43,7 @@
 
                     <label for="regisNama">Nama</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Nama">
-                        <input class="inputform" type="text" id="regisNama" placeholder="Nama Lengkap Anda">
+                        <input class="inputform" type="text" id="regisNama" placeholder="Nama Lengkap Anda" required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -48,7 +51,7 @@
                     </div>
                     <label for="regisNip">NIP</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi NIP anda">
-                        <input class="inputform" type="text" id="regisNip" placeholder="Nomor Induk Pegawai">
+                        <input class="inputform" type="text" id="regisNip" placeholder="Nomor Induk Pegawai" required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-user-secret" aria-hidden="true"></i>
@@ -56,7 +59,7 @@
                     </div>
                     <label for="regisTempatL">Tempat Lahir</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Tempat Lahir anda">
-                        <input class="inputform" type="text" id="regisTempatL" placeholder="Tempat Lahir Anda">
+                        <input class="inputform" type="text" id="regisTempatL" placeholder="Tempat Lahir Anda" required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-globe" aria-hidden="true"></i>
@@ -64,7 +67,7 @@
                     </div>
                     <label for="regisTanggalL">Tanggal Lahir</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Tanggal Lahir anda">
-                        <input class="inputform" type="date" id="regisTanggalL" >
+                        <input class="inputform" type="date" id="regisTanggalL" required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -72,7 +75,15 @@
                     </div>
                     <label for="regisEmail">Email</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Email anda">
-                        <input class="inputform" type="text" id="regisEmail" placeholder="Email">
+                        <input class="inputform" type="email" id="regisEmail" placeholder="Email" required>
+                        <span class="focus-inputform"></span>
+                        <span class="symbol-inputform">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <label for="regisNohp">Nomor Handphone</label>
+                    <div class="wrap-inputform validate-input" data-validate="Mohon Isi Nomor Handphone anda">
+                        <input class="inputform" type="text" id="regisNohp" placeholder="08*********" required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -81,7 +92,7 @@
                     <label for="regisPassword">Password</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Password anda">
                         <input class="inputform" type="password" name="password" id="regisPassword" placeholder="Password"
-                            onkeyup='check();'>
+                            onkeyup='check();' required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -90,7 +101,7 @@
                     <label for="confirm_password">Confirm Password</label>
                     <div class="wrap-inputform validate-input" data-validate="Mohon Isi Confirm Password anda">
                         <input class="inputform" type="password" name="confirm_password" id="confirm_password"
-                            placeholder="Confirm Password" onkeyup='check();'>
+                            placeholder="Confirm Password" onkeyup='check();' required>
                         <span class="focus-inputform"></span>
                         <span class="symbol-inputform">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -98,9 +109,7 @@
                     </div>
                     <span class="m-4" id='message'></span>
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" id="regisButton">
-                            Register
-                        </button>
+                        <button type="submit" class="login100-form-btn" id="regisButton">Register</button>
                     </div>
 
                     <div class="text-center p-t-12 mt-3">
@@ -154,7 +163,7 @@
             }
         }</script>
     <!--===============================================================================================-->
-    <script src="<?=base_url('assets/js/main.js')?>"></script>
+    <script src="<?=base_url('assets/js/admin.js')?>"></script>
     </script>
 
 </body>

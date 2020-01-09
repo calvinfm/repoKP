@@ -11,6 +11,10 @@
 </head>
 
 <body>
+<script type="text/javascript">
+var id2 = "<?php echo $this->session->userdata('id_dosen');?>";
+var id = null;  
+  </script>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -40,7 +44,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Account Profile</h4>
                   <p class="card-description"> Mohon Mengisi Profil anda dengan benar.</p>
-                  <form class="forms-sample" runat="server">
+                  <form class="forms-sample" runat="server" method="POST" enctype="multipart/form-data">
                     <div class="text-center">
                       <img id="blah" src="<?=base_url('assets/images/default.png')?>" alt="your image" class="rounded mx-auto d-block m-3 border border-secondary" style="max-width : 170px;" />
                     </div>
@@ -51,28 +55,8 @@
                       </div>
                       <label class="font-italic text-danger m-2">Foto Max 2mb.</label>
                     </div>
-                    <div class="form-group">
-                      <label for="inputJudul">Nama</label>
-                      <input type="text" class="form-control" id="inputJudul" placeholder="Nama Lengkap" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAuthors">NIP</label>
-                      <input type="text" class="form-control" id="inputAuthors" placeholder="Nomor Induk Pegawai" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAuthors">Tempat Lahir</label>
-                      <input type="text" class="form-control" id="inputAuthors" placeholder="Tempat Lahir anda" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAuthors">Tanggal Lahir</label>
-                      <input type="date" class="form-control" id="inputAuthors" value="" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAuthors">Email</label>
-                      <input type="email" class="form-control" id="inputAuthors" placeholder="Masukan Email Anda" value="" required>
-                    </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-success m-1">Save Changes</button>
+                      <button type="submit" class="btn btn-success m-1" id="saveIMG">Save Changes</button>
                       <button class="btn btn-light m-1">Cancel</button>
                     </div>
                   </form>

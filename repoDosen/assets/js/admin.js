@@ -3,6 +3,7 @@ const baseurl = `http://${$(location).attr('hostname')}/repoDosen/`
 
 $(document).ready(function () {
 	
+	if(id!=null){
 	//Jurnal Dosen
 	$.ajax({
                 url: `${apiurl}/dosen/all/journal/${id}`,
@@ -129,60 +130,65 @@ $(document).ready(function () {
 	});
 
 
-		if(document.getElementById("addButtonJournal")!=null){
-		//ADMIN Upload_Journal
-		document.getElementById("addButtonJournal").addEventListener("click", function (event) {
-			event.preventDefault();
-			var file = document.getElementById("inputPath").files[0];
-			// document.querySelector("#inputPath");
-			let path = new FormData();
-			// form.append('files', file.files[0]);
-			path.append('path', file);
-			
-			// var path = $("#inputPath").get(0).files[0];
-			var judul = $("#inputAuthors").val();
-			var abtraks = $("#inputAbstrak").val();
-			var author = $("#inputAuthors").val();
-			var tahun = $("#inputTahun").val();
 		
+}
 
-			$.ajax(
-			{
-			type: "POST",
-			method: "POST",
-			url: `${apiurl}repodoc/dosen/${id2}`,
-			contentType: false,
-			processData: false,
-			data:path,
-			//dataType: 'JSON',
-			success: function (res) {
-				if(res.Status=="Success"){
-					$.ajax(
-						{
-						type: "PUT",
-						method: "PUT",
-						url: `${apiurl}repodoc/dosen/${res.id}/input`,
-						data: {	
-								'judul': judul,
-								'abtraks': abtraks,
-								'author': author,
-								'tahun': tahun
-								},
-						//dataType: 'JSON',
-						success: function (res) {
-						}
-						});
-						alert("Berhasil Upload Journal");
-				}else{
-					alert("Error, Check File!");
-				}
+		if(document.getElementById("addButtonJournal")!=null){
+			//DOSEN Upload_Journal
+			document.getElementById("addButtonJournal").addEventListener("click", function (event) {
+				event.preventDefault();
+				var file = document.getElementById("inputPath").files[0];
+				// document.querySelector("#inputPath");
+				let path = new FormData();
+				// form.append('files', file.files[0]);
+				path.append('path', file);
+				
+				// var path = $("#inputPath").get(0).files[0];
+				var judul = $("#inputAuthors").val();
+				var abtraks = $("#inputAbstrak").val();
+				var author = $("#inputAuthors").val();
+				var tahun = $("#inputTahun").val();
 			
-		}
+
+				$.ajax(
+				{
+				type: "POST",
+				method: "POST",
+				url: `${apiurl}repodoc/dosen/${id2}`,
+				contentType: false,
+				processData: false,
+				data:path,
+				//dataType: 'JSON',
+				success: function (res) {
+					if(res.Status=="Success"){
+						$.ajax(
+							{
+							type: "PUT",
+							method: "PUT",
+							url: `${apiurl}repodoc/dosen/${res.id}/input`,
+							data: {	
+									'judul': judul,
+									'abtraks': abtraks,
+									'author': author,
+									'tahun': tahun
+									},
+							//dataType: 'JSON',
+							success: function (res) {
+							}
+							});
+							alert("Berhasil Upload Journal");
+					}else{
+						alert("Error, Check File!");
+					}
+				
+			}
+				});
 			});
-		});
-	}
+		}
+
 
 	if(document.getElementById("regisButton")!=null){
+		//DOSEN REGISTER
 		document.getElementById("regisButton").addEventListener("click", function (event) {
 			event.preventDefault();
 			var regisNama = $("#regisNama").val();
@@ -190,31 +196,89 @@ $(document).ready(function () {
 			var regisTempatL = $("#regisTempatL").val();
 			var regisTanggalL = $("#regisTanggalL").val();
 			var regisEmail = $("#regisEmail").val();
+			var regisNohp = $("#regisNohp").val();
 			var regisPassword = $("#regisPassword").val();
 			var confirm_password = $("#confirm_password").val();
+			console.log(regisEmail);
 			if(regisPassword==confirm_password){
 				$.ajax(
 					{
 					type: "POST",
 					method: "POST",
-					url: `${apiurl}repodoc/${res.id}/input`,
+					url: `${apiurl}user/`,
 					data: {	
-							'judul': judul,
-							'abtraks': abtraks,
-							'author': author,
-							'tahun': tahun,
-							'status': status
+							'username': regisNip,
+							'password': regisPassword
 							},
 					//dataType: 'JSON',
 					success: function (res) {
+						if(res.status=="Success"){
+							$.ajax(
+								{
+								type: "POST",
+								method: "POST",
+								url: `${apiurl}dosen/`,
+								data: {	
+										'nip': regisNip,
+										'nama': regisNama,
+										'tempat_lahir': regisTempatL,
+										'tanggal_lahir': regisTanggalL,
+										'no_hp' : regisNohp,
+										'email': regisEmail
+									
+									},
+								//dataType: 'JSON',
+								success: function (res) {
+									if(res.status=="Success"){
+										alert("Berhasil, Menunggu Konfirmasi Akun Oleh Admin");
+									}else{
+										alert("Error");
+									}
+								}
+								});
+						}else{
+							alert("NIP Telah Terdaftar");
+						}
 					}
 					});
 			}else{
-				alert("Password Not Match!")
+				alert("Password Not Match!");
 			}
 
 
 			
+		});
+	}
+
+	if(document.getElementById("saveIMG")!=null){
+		//DOSEN Upload_Journal
+		document.getElementById("saveIMG").addEventListener("click", function (event) {
+			event.preventDefault();
+			var file = document.getElementById("imgInp").files[0];
+			// document.querySelector("#inputPath");
+			let path = new FormData();
+			// form.append('files', file.files[0]);
+			path.append('path', file);
+		
+
+			$.ajax(
+			{
+			type: "POST",
+			method: "POST",
+			url: `${apiurl}repodoc/dosen/img/${id2}`,
+			contentType: false,
+			processData: false,
+			data:path,
+			//dataType: 'JSON',
+			success: function (res) {
+				if(res.Status=="Success"){
+						alert("Berhasil Upload Journal");
+				}else{
+					alert("Error, Check File!");
+				}
+			
+		}
+			});
 		});
 	}
 	      
