@@ -69,19 +69,19 @@
 					</div>
 
 					<div class="text-center p-t-12">
-						<span class="txt1">
+						<!-- <span class="txt1">
 							Lupa
 						</span>
 						<a class="txt2" href="#" data-toggle="modal" data-target="#exampleModalCenter">
 							Username / Password?
-						</a>
+						</a> -->
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="<?=base_url('admin/register')?>">
+						<!-- <a class="txt2" href="<?=base_url('admin/register')?>">
 							Daftar Akun Baru
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+						</a> -->
 					</div>
 				</form>
 			</div>

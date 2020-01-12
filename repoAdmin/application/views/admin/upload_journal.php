@@ -56,6 +56,7 @@
                                             <label for="inputTahun">Tahun</label>
                                             <select class="form-control" id="inputTahun" required>
                                                 <option value="" selected disabled>- Pilih Tahun Journal -</option>
+                                                <option value="2020">2020</option>
                                                 <option value="2019">2019</option>
                                                 <option value="2018">2018</option>
                                                 <option value="2017">2017</option>

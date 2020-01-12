@@ -33,6 +33,7 @@ class LoginAdmin extends CI_Controller {
         if ($res['status'] == 'Success') {
             $this->session->set_userdata([
                 'username' => $res['username'],
+                'id' => $res['id']
             ]);
             redirect('admin/dashboard');
         } else {

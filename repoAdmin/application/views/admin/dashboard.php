@@ -43,35 +43,30 @@
           <div class="row">
             <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient-danger card-img-holder text-white">
-                <div class="card-body">
-                  <img src="<?=base_url('assets/images/dashboard/circle.svg')?>" class="card-img-absolute" alt="circle-image" />
-                  <h4 class="font-weight-normal mb-3">Upload Journal Hari ini
-                    <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                  </h4>
-                  <h2 class="mb-5">15</h2>
+                <div class="card-body" id="jurnal_upload">
+                  
                 </div>
               </div>
             </div>
             <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient-info card-img-holder text-white">
-                <div class="card-body">
-                  <img src="<?=base_url('assets/images/dashboard/circle.svg')?>" class="card-img-absolute" alt="circle-image" />
-                  <h4 class="font-weight-normal mb-3">Total Journal
+                <div class="card-body" id="jumlah_jurnal">
+                  <!-- <img src="<?=base_url('assets/images/dashboard/circle.svg')?>" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Published Journal
                     <i class="mdi mdi-book-open-page-variant mdi-24px float-right"></i>
                   </h4>
-                  <h2 class="mb-5">45,6334</h2>
+                  <h2 class="mb-5">45,6334</h2> -->
                 </div>
               </div>
             </div>
             <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient-success card-img-holder text-white">
-                <div class="card-body">
-                  <img src="<?=base_url('assets/images/dashboard/circle.svg')?>" class="card-img-absolute" alt="circle-image" />
-                  <h4 class="font-weight-normal mb-3">Sedang Online
-                    <i class="mdi mdi-eye mdi-24px float-right"></i>
+                <div class="card-body" id="active_user">
+                  <!-- <img src="<?=base_url('assets/images/dashboard/circle.svg')?>" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Active User
+                    
                   </h4>
-                  <h2 class="mb-5">95</h2>
-                  <h6 class="card-text">1 Januari 2019</h6>
+                  <h2 class="mb-5">95</h2> -->
                 </div>
               </div>
             </div>

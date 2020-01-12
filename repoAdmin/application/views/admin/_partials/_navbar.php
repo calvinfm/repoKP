@@ -29,9 +29,9 @@
               </div>
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="<?=base_url('admin/profile')?>">
+              <!-- <a class="dropdown-item" href="<?=base_url('admin/profile')?>">
                 <i class="mdi mdi-account mr-2 text-success"></i> My Profile </a>
-              <div class="dropdown-divider"></div>
+              <div class="dropdown-divider"></div> -->
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logOutModals">
                 <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
             </div>
@@ -41,7 +41,7 @@
               <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
               data-toggle="dropdown">
               <i class="mdi mdi-bell-outline"></i>
@@ -89,7 +89,7 @@
               <div class="dropdown-divider"></div>
               <h6 class="p-3 mb-0 text-center">See all notifications</h6>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item nav-logout d-none d-lg-block" data-toggle="modal" data-target="#logOutModals">
             <a class="nav-link" href="#">
               <i class="mdi mdi-power"></i>

@@ -31,7 +31,7 @@ var id=null;
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form col-12" id="registerUser">
+                <form class="login100-form validate-form col-12" id="registerUser" method="POST">
                     <span class="login100-form-title2">
                         <div class="login100-pic js-tilt mx-auto d-block" data-tilt>
                             <img src="<?=base_url('assets/images/img-01.png')?>" class="img-fluid" alt="IMG">

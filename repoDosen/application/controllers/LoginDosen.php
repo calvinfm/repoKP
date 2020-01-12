@@ -33,7 +33,8 @@ class LoginDosen extends CI_Controller {
         if ($res['status'] == 'Success') {
             $this->session->set_userdata([
                 'username' => $res['username'],
-                'id_dosen' => $res['id_dosen']
+                'id_dosen' => $res['id_dosen'],
+                'path_image' => $res['path_image']
             ]);
             redirect('dosen/journal');
         } else {

@@ -1,5 +1,6 @@
+
 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?=base_url('dosen/journal')?>"><img src="<?=base_url('assets/images/banner.jpg')?>" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="<?=base_url('dosen/journal')?>" ><img src="<?=base_url('assets/images/banner.jpg')?>" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="<?=base_url('dosen/journal')?>"><img src="<?=base_url('assets/images/logo.png')?>" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -20,9 +21,8 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
               aria-expanded="false">
-              <div class="nav-profile-img">
-                <img src="<?=base_url('assets/images/admin.png')?>" alt="image">
-                <span class="availability-status online"></span>
+              <div class="nav-profile-img"  id="img_foto">
+                
               </div>
               <div class="nav-profile-text">
                 <p class="mb-1 text-black" id="NamaLogin">Dosen</p>
@@ -41,7 +41,7 @@
               <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
               data-toggle="dropdown">
               <i class="mdi mdi-bell-outline"></i>
@@ -89,7 +89,7 @@
               <div class="dropdown-divider"></div>
               <h6 class="p-3 mb-0 text-center">See all notifications</h6>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item nav-logout d-none d-lg-block" data-toggle="modal" data-target="#logOutModals">
             <a class="nav-link" href="#">
               <i class="mdi mdi-power"></i>

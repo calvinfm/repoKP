@@ -1,8 +1,12 @@
 const apiurl = `http://${$(location).attr('hostname')}/repoKP/repoSTIHPADA-api/public/`
-const baseurl = `http://${$(location).attr('hostname')}/repoAdmin/`
+const baseurl = `http://${$(location).attr('hostname')}/repoKP/repoAdmin/`
 
 $(document).ready(function () {
 	
+
+	var upload_terbaru;
+	var active_user=0;
+	var jumlah_jurnal;
 
 	//dashboard Admin
 	$.ajax({
@@ -45,7 +49,18 @@ $(document).ready(function () {
                   })
                 }
               }).done(function (response) {
-                var i;
+		var i;
+		upload_terbaru = response.data.length;
+		if(document.getElementById("jurnal_upload")!=null){
+			var upbar = `
+			<img src="${baseurl}assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+			<h4 class="font-weight-normal mb-3">New Journal Upload
+			  <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+			</h4>
+			<h2 class="mb-5">${upload_terbaru}</h2>
+			`;
+			$("#jurnal_upload").html(upbar);
+		}
                 for (i = 0; i < response.data.length; i++) {
                   var rep = response.data[i].id_rep;
                   t.row.add([
@@ -78,8 +93,8 @@ $(document).ready(function () {
 					}
 					}).done(function (response) {
 						
-					t.row(this).remove().draw(false);
-					
+					// t.row(this).remove().draw(false);
+					location.reload(true);
 					});
 
 				});
@@ -104,7 +119,8 @@ $(document).ready(function () {
 					console.log(c);
 					}
 					}).done(function (response) {
-					t.row(this).remove().draw(false);
+					// t.row(this).remove().draw(false);
+					location.reload(true);
 					});
 	
 				});
@@ -179,6 +195,9 @@ $(document).ready(function () {
 			]).draw(true);
 			}
 		  	if(response.data[i].status==1){
+
+				active_user += 1; 
+
 				t.row.add([
 				"<img src='../../"+response.data[i].path_image+"' class='mr-2' alt='image'>"+response.data[i].nama,
 				"<label class='badge badge-gradient-success'>Actived</label>",
@@ -201,7 +220,16 @@ $(document).ready(function () {
 					]).draw(true);
 					}
 		}
-
+		if(document.getElementById("active_user")!=null){
+			var upbar = `
+			<img src="${baseurl}assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+			<h4 class="font-weight-normal mb-3">Active User
+			<i class="mdi mdi-eye mdi-24px float-right"></i>
+			</h4>
+			<h2 class="mb-5">${active_user}</h2>
+			`;
+			$("#active_user").html(upbar);
+		}
 		
 		$('#adminMembersTable').on('click', 'button.actM', function (event) {
 				event.preventDefault();
@@ -311,7 +339,8 @@ $(document).ready(function () {
                   })
                 }
               }).done(function (response) {
-                var i;
+		var i;
+		jumlah_jurnal = response.data.length;
                 for (i = 0; i < response.data.length; i++) {
                   var rep = response.data[i].id_rep;
                   t.row.add([
@@ -320,10 +349,20 @@ $(document).ready(function () {
 		    response.data[i].author,
                     "<img src='../../"+response.data[i].path_image+"' class='mr-2' alt='image'>"+response.data[i].nama,
                     response.data[i].email,
-                    "<button type='button' id='viewJ' class='viewJ btn btn-primary btn-icon-text btn-sm' key='" + rep + "'> <i class='mdi mdi-download btn-icon-prepend'></i> Preview </button> <button type='button' id='rjctJ' class='rjctJ btn btn-danger btn-icon-text btn-sm ml-3' data-toggle='modal' data-target='#rejectedModalsJournal' key='" + rep + "'> <i class='mdi mdi-close-box btn-icon-prepend' ></i> Block </button>",
+                    "<button type='button' id='viewJ' class='viewJ btn btn-primary btn-icon-text btn-sm' href='#cardt' key='" + rep + "'> <i class='mdi mdi-download btn-icon-prepend'></i> Preview </button> <button type='button' id='rjctJ' class='rjctJ btn btn-danger btn-icon-text btn-sm ml-3' data-toggle='modal' data-target='#rejectedModalsJournal' key='" + rep + "'> <i class='mdi mdi-close-box btn-icon-prepend' ></i> Block </button>",
                   ]).draw(true);
                 }
 
+		if(document.getElementById("jumlah_jurnal")!=null){
+			var upbar = `
+			<img src="${baseurl}assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+			<h4 class="font-weight-normal mb-3">Published Journal
+			<i class="mdi mdi-book-open-page-variant float-right"></i>
+			</h4>
+			<h2 class="mb-5">${jumlah_jurnal}</h2>
+			`;
+			$("#jumlah_jurnal").html(upbar);
+		}
 		
 		$('#adminJournalTable').on('click', 'button.viewJ', function (event) {
 				event.preventDefault();
@@ -336,13 +375,20 @@ $(document).ready(function () {
 					dataType: "json",
 					success: function (res) {
 						var tampil
-						if (res.Status == "Success") {
-							
+						if (res.Status == "Success" && res.data.id_dosen == 1) {
 							tampil =
 								`
 								<h4 class="card-title">${res.data.judul}</h4>
                   						<span>Authors : ${res.data.author} </span>
                   						<iframe class="mt-3" src="${res.data.path}" width="100%" height="1000px"></iframe>
+					`;
+							$("#tampilJurnal").html(tampil);
+						}else if(res.Status == "Success" && res.data.id_dosen != 1) {
+							tampil =
+								`
+								<h4 class="card-title">${res.data.judul}</h4>
+                  						<span>Authors : ${res.data.author} </span>
+                  						<iframe class="mt-3" src="../${res.data.path}" width="100%" height="1000px"></iframe>
 					`;
 							$("#tampilJurnal").html(tampil);
 						}
@@ -353,6 +399,7 @@ $(document).ready(function () {
 					console.log(c);
 					}
 					}).done(function (response) {
+						// location.reload(true);
 					// t.row(this).remove().draw(false);
 					});
 
@@ -377,7 +424,8 @@ $(document).ready(function () {
 					console.log(c);
 					}
 					}).done(function (response) {
-					t.row(this).remove().draw(false);
+					// t.row(this).remove().draw(false);
+					location.reload(true);
 					});
 	
 				});
@@ -403,13 +451,12 @@ $(document).ready(function () {
 			
 			
 			// var path = $("#inputPath").get(0).files[0];
-			var judul = $("#inputAuthors").val();
+			var judul = $("#inputJudul").val();
 			var abtraks = $("#inputAbstrak").val();
 			var author = $("#inputAuthors").val();
 			var tahun = $("#inputTahun").val();
 			var id_dosen = $("#id_dosen").val();
 			var status = $("#status").val();
-			console.log(path);
 		
 
 			$.ajax(
@@ -486,6 +533,10 @@ $(document).ready(function () {
 	}
 	      
 	
+
+	// if(document.getElementById("jurnal_upload")!=null){
+	// 	$("#jurnal_upload").html(upload_terbaru);
+	// }
 
 	
 

@@ -5,7 +5,7 @@ class RepoDosen extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id_dosen')) {
 			$this->load->view('dosen/journal');
 		    } else {
 			redirect('dosen/login');
@@ -21,7 +21,7 @@ class RepoDosen extends CI_Controller {
 
 	public function journal()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id_dosen') ) {
 			$this->load->view('dosen/journal');
 		    } else {
 			redirect('dosen/login');
@@ -30,7 +30,7 @@ class RepoDosen extends CI_Controller {
 	
 	public function profile()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id_dosen')) {
 			$this->load->view('dosen/profile');
 		    } else {
 			redirect('dosen/login');
@@ -39,7 +39,7 @@ class RepoDosen extends CI_Controller {
 	
 	public function upload_journal()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id_dosen')) {
 			$this->load->view('dosen/upload_journal');
 		    } else {
 			redirect('dosen/login');

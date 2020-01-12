@@ -1,5 +1,5 @@
 const apiurl = `http://${$(location).attr('hostname')}/repoKP/repoSTIHPADA-api/public/`
-const baseurl = `http://${$(location).attr('hostname')}/repoDosen/`
+const baseurl = `http://${$(location).attr('hostname')}/repoKP/`
 
 $(document).ready(function () {
 	
@@ -50,6 +50,7 @@ $(document).ready(function () {
                   })
                 }
               }).done(function (response) {
+		      if(response.status=="Success"){
 		var i;
                 for (i = 0; i < response.data.length; i++) {
                   var rep = response.data[i].id_rep;
@@ -62,7 +63,7 @@ $(document).ready(function () {
                     "<button type='button' id='viewJ' class='viewJ btn btn-primary btn-icon-text btn-sm' key='" + rep + "'> <i class='mdi mdi-download btn-icon-prepend'></i> Preview </button> <button type='button' id='rjctJ' class='rjctJ btn btn-danger btn-icon-text btn-sm ml-3' data-toggle='modal' data-target='#rejectedModalsJournal' key='" + rep + "'> <i class='mdi mdi-close-box btn-icon-prepend' ></i> Block </button>",
                   ]).draw(true);
                 }
-
+		
 		
 		$('#dosenJournalTable').on('click', 'button.viewJ', function (event) {
 				event.preventDefault();
@@ -81,7 +82,7 @@ $(document).ready(function () {
 								`
 								<h4 class="card-title">${res.data.judul}</h4>
                   						<span>Authors : ${res.data.author} </span>
-                  						<iframe class="mt-3" src="${res.data.path}" width="100%" height="1000px"></iframe>
+                  						<iframe class="mt-3" src="../${res.data.path}" width="100%" height="1000px"></iframe>
 					`;
 							$("#tampilJurnal").html(tampil);
 						}
@@ -116,7 +117,8 @@ $(document).ready(function () {
 					console.log(c);
 					}
 					}).done(function (response) {
-					t.row(this).remove().draw(false);
+					// t.row(this).remove().draw(false);
+					location.reload(true);
 					});
 	
 				});
@@ -124,32 +126,74 @@ $(document).ready(function () {
 				
 			
 			});
-	
+		}
 		
 
 	});
-
-
 		
 }
+
+
+		$.ajax(
+			{
+			type: "GET",
+			method: "GET",
+			url: `${apiurl}dosen/${id}`,
+			//dataType: 'JSON',
+			success: function (res) {
+				var namaa = ``;
+				
+				if(res.data[0].nama.length<11){
+					var namee = 
+					`<span class="font-weight-bold mb-2" >${res.data[0].nama}</span>
+					<span class="text-secondary text-small">Dosen</span>`;
+					$("#namee").html(namee);	
+				}else{
+				for(i=0;i<11;i++){
+					namaa+=res.data[0].nama[i];
+				}
+				var namee = 
+				`<span class="font-weight-bold mb-2" >${namaa}...</span>
+				<span class="text-secondary text-small">Dosen</span>`;
+				$("#namee").html(namee);
+			}
+					var pattt =
+						`
+						<img src="${baseurl}${res.data[0].path_image}" alt="image">
+						<span class="availability-status online"></span>
+					`;
+					$("#img_foto").html(pattt);
+					var pattt =
+						`
+						<img src="${baseurl}${res.data[0].path_image}" alt="image">
+						<span class="login-status online"></span>
+					`;
+					$("#img_foto2").html(pattt);
+					
+				
+			}
+			});
+		
 
 		if(document.getElementById("addButtonJournal")!=null){
 			//DOSEN Upload_Journal
 			document.getElementById("addButtonJournal").addEventListener("click", function (event) {
 				event.preventDefault();
 				var file = document.getElementById("inputPath").files[0];
+
+				// var file2 = document.getElementById("inputPath").files[0];
 				// document.querySelector("#inputPath");
 				let path = new FormData();
+				// let input = new FormData();
 				// form.append('files', file.files[0]);
 				path.append('path', file);
-				
+				// input.append('doc', file2);
 				// var path = $("#inputPath").get(0).files[0];
 				var judul = $("#inputAuthors").val();
 				var abtraks = $("#inputAbstrak").val();
 				var author = $("#inputAuthors").val();
 				var tahun = $("#inputTahun").val();
 			
-
 				$.ajax(
 				{
 				type: "POST",
@@ -192,14 +236,13 @@ $(document).ready(function () {
 		document.getElementById("regisButton").addEventListener("click", function (event) {
 			event.preventDefault();
 			var regisNama = $("#regisNama").val();
-			var regisNip = $("#regisNip").val();
+			var regisNip = $("#regisNip").val();	
 			var regisTempatL = $("#regisTempatL").val();
 			var regisTanggalL = $("#regisTanggalL").val();
 			var regisEmail = $("#regisEmail").val();
 			var regisNohp = $("#regisNohp").val();
 			var regisPassword = $("#regisPassword").val();
-			var confirm_password = $("#confirm_password").val();
-			console.log(regisEmail);
+			var confirm_password = $("#confirm_password").val();	
 			if(regisPassword==confirm_password){
 				$.ajax(
 					{
@@ -272,7 +315,8 @@ $(document).ready(function () {
 			//dataType: 'JSON',
 			success: function (res) {
 				if(res.Status=="Success"){
-						alert("Berhasil Upload Journal");
+						alert("Berhasil Upload Gambar");
+						location.reload(true);
 				}else{
 					alert("Error, Check File!");
 				}

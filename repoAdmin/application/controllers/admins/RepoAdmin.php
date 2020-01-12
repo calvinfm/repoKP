@@ -5,7 +5,7 @@ class RepoAdmin extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/dashboard');
 		    } else {
 			redirect('admin/login');
@@ -20,7 +20,7 @@ class RepoAdmin extends CI_Controller {
 
 	public function dashboard()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/dashboard');
 		    } else {
 			redirect('admin/login');
@@ -29,7 +29,7 @@ class RepoAdmin extends CI_Controller {
 
 	public function journal()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/journal');
 		    } else {
 			redirect('admin/login');
@@ -39,7 +39,7 @@ class RepoAdmin extends CI_Controller {
 
 	public function members()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/members');
 		    } else {
 			redirect('admin/login');
@@ -48,7 +48,7 @@ class RepoAdmin extends CI_Controller {
 	
 	public function profile()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/profile');
 		    } else {
 			redirect('admin/login');
@@ -57,7 +57,7 @@ class RepoAdmin extends CI_Controller {
 	
 	public function upload_journal()
 	{
-		if($this->session->userdata('username')) {
+		if($this->session->userdata('username') && $this->session->userdata('id')) {
 			$this->load->view('admin/upload_journal');
 		    } else {
 			redirect('admin/login');

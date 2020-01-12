@@ -13,7 +13,7 @@
 <body>
 <script type="text/javascript">
 var id2 = "<?php echo $this->session->userdata('id_dosen');?>";
-var id = null;  
+var id = "<?php echo $this->session->userdata('username');?>";
   </script>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
