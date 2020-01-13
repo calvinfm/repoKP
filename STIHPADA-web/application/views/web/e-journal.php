@@ -50,9 +50,11 @@
                                 <input placeholder="Search E-Journal, Authors" name="search" type="text"
                                     onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Search E-Journal, Authors'">
-                                <button type="submit" class="btn-lg"><i class="fa fa-search"></i></button>
+                                <button type="submit" >
+                                    <i class="fa fa-search"></i></button>
                             </form>
                         </div>
+                        
                         <div class="single-sidebar-widget popular-post-widget">
                             <h4 class="popular-title">E-Journal</h4>
                             <div class="popular-post-list" id="ejournalTampil">
