@@ -45,14 +45,13 @@
                 </div>
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
-                        <div class="single-sidebar-widget search-widget">
-                            <form class="search-form mt-100" action="#">
-                                <input placeholder="Search E-Journal, Authors" name="search" type="text"
+                        <div class="single-sidebar-widget search-widget" >
+                                <input placeholder="Search E-Journal, Authors" name="search" id="searchJournal" type="text"
                                     onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Search E-Journal, Authors'">
-                                <button type="submit" >
-                                    <i class="fa fa-search"></i></button>
-                            </form>
+                                <a id="searchJournale">
+                                    <i class="fa fa-search"></i>
+                                </a>
                         </div>
                         
                         <div class="single-sidebar-widget popular-post-widget">

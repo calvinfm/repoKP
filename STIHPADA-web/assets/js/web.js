@@ -90,16 +90,111 @@ $(document).ready(function () {
 			`;
 			}
 
+
 			$("#ejournalTampil").html(sideJournal);
 
 		
+			$('#searchJournal').change(function(){
+				// var idd = this.getAttribute('searchJournal');
+				// var idd = $(this).attr("searchJournal");
+				// console.log(idd);
+				var idd = $("#searchJournal").val();
+				// console.log(idd);
+								
+				$.ajax({
+					url: `${apiurl}/repodoc/search/${idd}`,
+					type: 'GET',
+					dataType: 'json',
+					contentType: 'application/json; charset=utf-8',
+					success: function (response) {
+						if(response.Status=="Success"){
+
+							var sideJournal = `` ;
+							var i = 0;
+							for(i=0;i<response.data.length;i++){
+							var jud = response.data[i].judul;
+							var auth = response.data[i].author;
+							var tahu = response.data[i].tahun;
+							var abs = response.data[i].abstrak;
+							var path = response.data[i].path;
+							var nam = response.data[i].nama;
+							var dos = response.data[i].id_dosen;
+							sideJournal += `
+							<div class="single-post-list d-flex flex-row align-items-center">
+							<div class="details">
+							<a id="viewJ" href="#tampliEjournale" dos="${dos}" jud="${jud}" auth="${auth}" tahu="${tahu}" abs="${abs}" path="${path}" nam="${nam}">
+								<h6>${response.data[i].judul}</h6>
+							</a>
+							<p class="font-weight-bold">Authors : ${response.data[i].author}</p>
+							<p>${response.data[i].tahun} </p>
+							</div>
+							</div>
+							`;
+			
+								
+			$("#ejournalTampil").html(sideJournal);
+						}
+					}
+				}
+
+
+				});		
+			});
+
+			$('#sumbitHome').change(function(){
+				// var idd = this.getAttribute('searchJournal');
+				// var idd = $(this).attr("searchJournal");
+				// console.log(idd);
+				var idd = $("#homeSearch").val();
+				console.log(idd);
+								
+				$.ajax({
+					url: `${apiurl}/repodoc/search/${idd}`,
+					type: 'GET',
+					dataType: 'json',
+					contentType: 'application/json; charset=utf-8',
+					success: function (response) {
+						if(response.Status=="Success"){
+
+							var sideJournal = `` ;
+							var i = 0;
+							for(i=0;i<response.data.length;i++){
+							var jud = response.data[i].judul;
+							var auth = response.data[i].author;
+							var tahu = response.data[i].tahun;
+							var abs = response.data[i].abstrak;
+							var path = response.data[i].path;
+							var nam = response.data[i].nama;
+							var dos = response.data[i].id_dosen;
+							sideJournal += `
+							<div class="single-post-list d-flex flex-row align-items-center">
+							<div class="details">
+							<a id="viewJ" href="#tampliEjournale" dos="${dos}" jud="${jud}" auth="${auth}" tahu="${tahu}" abs="${abs}" path="${path}" nam="${nam}">
+								<h6>${response.data[i].judul}</h6>
+							</a>
+							<p class="font-weight-bold">Authors : ${response.data[i].author}</p>
+							<p>${response.data[i].tahun} </p>
+							</div>
+							</div>
+							`;
+			
+								
+			$("#ejournalTampil").html(sideJournal);
+						}
+					}
+				}
+
+
+				});		
+			});
+
 			// if(document.getElementById("a.viewJ")!=null){
 				//ADMIN Upload_Journal
 				// document.getElementById("a.viewJ").addEventListener("click", function (event) {
 				$('a[id="viewJ"]').click(function() {
 				event.preventDefault();
 
-				console.log('masuk');
+				// console.log('masuk');
 				
 				// var key = $(this).data('key');
 				var jud = $(this).attr("jud");
@@ -168,11 +263,11 @@ $(document).ready(function () {
 
 			      });
 		
-	}
+		}
+	
 
-
-		
 	});
+		
 
 	
 

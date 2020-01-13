@@ -28,10 +28,10 @@
 					</p>
 
 					<div class="input-wrap">
-						<form action="" class="form-box d-flex justify-content-between">
-							<input type="text" placeholder="Search E-Journal, Authors " class="form-control"
-								name="username">
-							<button type="submit" class="btn search-btn">Search</button>
+						<form action="<?= base_url('e-journal') ?>" class="form-box d-flex justify-content-between">
+							<input type="text" placeholder="Search E-Journal, Authors" id="homeSearch" class="form-control"
+								name="search">
+							<button type="submit" id="sumbitHome" class="btn search-btn">Search</button>
 						</form>
 					</div>
 				</div>
