@@ -32,10 +32,10 @@
 								<li><a class=" <?php echo $this->uri->segment(2) == 'pendidikan_profesi_advokat' ? 'text-info': '' ?>" href="<?= base_url('prodi/pendidikan_profesi_advokat')?>">Pendidikan Profesi Advokat</a></li>
 							</ul>
 						</li>
-                        <li class=" <?php echo $this->uri->segment(1) == 'e-journal' ? 'menu-active': '' ?>"><a href="<?= base_url('e-journal')?>">E-Journal</a></li>
+                        <li class=" <?php echo $this->uri->segment(1) == 'repository' ? 'menu-active': '' ?>"><a href="<?= base_url('repository')?>">Repository</a></li>
                         <li class=" <?php echo $this->uri->segment(1) == 'contact' ? 'menu-active': '' ?>"><a href="<?= base_url('contact')?>">Contact</a></li>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
         </div>
-    </header>
+</header>

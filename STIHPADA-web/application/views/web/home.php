@@ -28,8 +28,8 @@
 					</p>
 
 					<div class="input-wrap">
-						<form action="<?= base_url('e-journal') ?>" class="form-box d-flex justify-content-between">
-							<input type="text" placeholder="Search E-Journal, Authors" id="homeSearch" class="form-control"
+						<form action="<?= base_url('repository') ?>" method="GET" class="form-box d-flex justify-content-between">
+							<input type="text" placeholder="Search Repository, Authors" id="homeSearch" class="form-control"
 								name="search">
 							<button type="submit" id="sumbitHome" class="btn search-btn">Search</button>
 						</form>

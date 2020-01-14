@@ -24,7 +24,7 @@
                         <span class="box">
                             <a href="<?= base_url("home")?>">Home </a>
                             <i class="lnr lnr-arrow-right"></i>
-                            <a href="e-journal.html" id="tampliEjournale">E-Journal</a>
+                            <a href="<?= base_url('repository')?>" id="tampliEjournale">Repository</a>
                         </span>
                     </div>
                 </div>
@@ -46,16 +46,17 @@
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget search-widget" >
-                                <input placeholder="Search E-Journal, Authors" name="search" id="searchJournal" type="text"
+                                <input placeholder="Search Repository, Authors" name="search" id="searchJournal" type="text"
                                     onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Search E-Journal, Authors'">
+                                    onblur="this.placeholder = 'Search Repository, Authors'"
+                                    value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" >
                                 <a id="searchJournale">
                                     <i class="fa fa-search"></i>
                                 </a>
                         </div>
                         
                         <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="popular-title">E-Journal</h4>
+                            <h4 class="popular-title">Repository</h4>
                             <div class="popular-post-list" id="ejournalTampil">
                                 <!-- <div class="single-post-list d-flex flex-row align-items-center">
                                     <div class="details">

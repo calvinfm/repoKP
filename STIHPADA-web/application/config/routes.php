@@ -70,7 +70,7 @@ $route['prodi/biaya_ilmu_hukum_s2'] = 'web/stihpada/prodi_biaya_ilmu_hukum_s2';
 $route['prodi/pendidikan_profesi_advokat'] = 'web/stihpada/prodi_pendidikan_profesi_advokat';
 
 //E-journal
-$route['e-journal'] = 'web/stihpada/e_journal';
+$route['repository'] = 'web/stihpada/e_journal';
 
 //Contact
 $route['contact'] = 'web/stihpada/contact';
