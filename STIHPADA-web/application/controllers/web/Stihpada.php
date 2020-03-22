@@ -21,12 +21,12 @@ class Stihpada extends CI_Controller {
 
 	public function tentang_tujuan_dan_saran()
 	{
-			$this->load->view('web/tujuan_dan_saran');
+			$this->load->view('web/tujuan-dan-sasaran');
 	}
 
 	public function tentang_pimpinan_lembaga()
 	{
-			$this->load->view('web/pimpinan_lembaga');
+			$this->load->view('web/pimpinan-lembaga');
 	}
 
 	public function tentang_akreditasi()

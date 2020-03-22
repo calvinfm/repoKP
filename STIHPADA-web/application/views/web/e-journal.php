@@ -46,13 +46,22 @@
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget search-widget" >
-                                <input placeholder="Search Repository, Authors" name="search" id="searchJournal" type="text"
+                                <div class="input-group mb-3">
+                                    <input class='form-control' aria-describedby="button-addon2" placeholder="Search Repository, Authors" name="search" id="searchJournal" type="text"
+                                    onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Search Repository, Authors'"
+                                    value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" >
+                                    <div class="input-group-append">
+                                        <a class="btn btn-info text-white" type="button" id="button-addon2 searchJournale"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <!-- <input placeholder="Search Repository, Authors" name="search" id="searchJournal" type="text"
                                     onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Search Repository, Authors'"
                                     value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" >
                                 <a id="searchJournale">
                                     <i class="fa fa-search"></i>
-                                </a>
+                                </a> -->
                         </div>
                         
                         <div class="single-sidebar-widget popular-post-widget">
@@ -112,30 +121,7 @@
                                         <p>13 Dec, 2019 </p>
                                     </div>
                                 </div> -->
-                            </div>
-                            <nav class="blog-pagination justify-content-center d-flex">
-                                <ul class="pagination">
-                                    <li class="page-item disabled">
-                                        <a href="#" class="page-link" aria-label="Previous">
-                                            <span aria-hidden="true">
-                                                <span class="lnr lnr-chevron-left"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active"><a href="#" class="page-link">01</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">02</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">03</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">04</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">09</a></li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Next">
-                                            <span aria-hidden="true">
-                                                <span class="lnr lnr-chevron-right"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            
                         </div>
                     </div>
                 </div>
@@ -156,7 +142,6 @@
 
    
     <?php $this->load->view("web/_partials/_js.php")?>
-    
     <script src="<?=base_url('assets/js/web.js')?>"></script>
 </body>
 
